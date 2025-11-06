@@ -16,8 +16,8 @@ public class Triangle extends Shape{
     @Override
    public void paint() {
         turtle = new Turtle(world,-100, -100);
-        int width = 200;
-        int height = 200;
+        int width = world.getWidth() / 5;
+        int height = world.getHeight() / 5;
 
         // calculate the hypotenuse (diagonal)
         // a2 + b2 = c2
@@ -34,7 +34,7 @@ public class Triangle extends Shape{
 
         int sides = 3;
         for (int i = 0; i < sides; i++) {
-            turtle.turnRight(120);
+            turtle.turnRight(-120);
             turtle.forward(hypotenuse);
         }
         homeScreen();
