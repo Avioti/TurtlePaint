@@ -66,6 +66,11 @@ public class Inputs {
             case "CYAN" -> Color.CYAN;
             case "MAGENTA" -> Color.MAGENTA;
             case "WHITE" -> Color.WHITE;
+            case "ORANGE" -> Color.ORANGE;
+            case "PINK" -> Color.PINK;
+            case "GRAY", "GREY" -> Color.GRAY;
+            case "DARK_GRAY", "DARK_GREY" -> Color.DARK_GRAY;
+            case "LIGHT_GRAY", "LIGHT_GREY" -> Color.LIGHT_GRAY;
             default -> {
                 System.out.println("Color not recognized. Using BLACK.");
                 yield Color.BLACK;
