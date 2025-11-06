@@ -8,7 +8,7 @@ import java.awt.*;
 import static com.pluralsight.ui.TurtlePainterApp.*;
 
 public class Circle extends Shape{
-    int radius;
+    public int radius;
 
     public Circle(Turtle turtle, Point location, String color, int border, int radius) {
         super(turtle, location, color, border);

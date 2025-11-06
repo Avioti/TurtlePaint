@@ -1,5 +1,7 @@
 package com.pluralsight.ui;
 
+import com.pluralsight.data.Painting;
+import com.pluralsight.data.SavePainting;
 import com.pluralsight.data.Turtle;
 import com.pluralsight.data.World;
 import com.pluralsight.shapes.Circle;
@@ -10,10 +12,11 @@ import com.pluralsight.ui.utility.Inputs;
 import java.awt.*;
 import java.util.Scanner;
 
-public class TurtlePainterApp {
+public class TurtlePainterApp extends Painting{
     public static Turtle turtle;
     public static World world;
     public static final Scanner scanner = new Scanner(System.in);
+
     public static void run() {
         welcomeScreen();
         homeScreen();
@@ -85,6 +88,7 @@ public class TurtlePainterApp {
         String color = Inputs.promptForColor();
         Point location = Inputs.promptForPoint();
         Circle circle = new Circle(turtle, location, color, border, radius);
+        Painting.addShape(circle);
         circle.paint();
     }
 
@@ -96,6 +100,7 @@ public class TurtlePainterApp {
         System.out.println("What is Side Length?");
         int sideLength = Inputs.promptForInt();
         Square square = new Square(turtle, location, color, border,sideLength);
+        Painting.addShape(square);
         square.paint();
     }
 
@@ -104,11 +109,21 @@ public class TurtlePainterApp {
         String color = Inputs.promptForColor();
         Point location = Inputs.promptForPoint();
         Triangle triangle = new Triangle(turtle, location, color, border);
+        Painting.addShape(triangle);
         triangle.paint();
     }
 
     public static void saveImage() {
-
+        if(Painting.shapes.isEmpty()) {
+            System.out.println("No shapes to save. Please add shapes before saving.");
+            homeScreen();
+            handleChoice();
+            return;
+        }
+        SavePainting.saveToCsv();
+        System.out.println("Image saved successfully!");
+        homeScreen();
+        handleChoice();
     }
 
     public static void exit() {

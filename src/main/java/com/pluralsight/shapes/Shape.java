@@ -5,10 +5,10 @@ import com.pluralsight.data.Turtle;
 import java.awt.*;
 
 public abstract class Shape {
-    Turtle turtle;
-    Point location;
-    String color;
-    int border;
+    public Turtle turtle;
+    public Point location;
+    public String color;
+    public int border;
 
     public Shape(Turtle turtle, Point location, String color, int border) {
         this.turtle = turtle;

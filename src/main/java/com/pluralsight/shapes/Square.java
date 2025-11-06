@@ -8,7 +8,7 @@ import java.awt.*;
 import static com.pluralsight.ui.TurtlePainterApp.*;
 
 public class Square extends Shape {
-    private int sideLength;
+    public int sideLength;
 
     public Square(Turtle turtle, Point location, String color, int border, int sideLength) {
         super(turtle, location, color, border);
