@@ -13,8 +13,6 @@ import com.pluralsight.ui.utility.Inputs;
 import java.awt.*;
 import java.util.Scanner;
 
-
-
 public class TurtlePainterApp extends Painting{
     public static Turtle turtle;
     public static World world;
@@ -103,7 +101,7 @@ public class TurtlePainterApp extends Painting{
         String color = Inputs.promptForColor();
         Point location = Inputs.promptForPoint();
         Circle circle = new Circle(turtle, location, color, border, radius);
-        Painting.addShape(circle);
+        addShape(circle);
         circle.paint();
     }
 
@@ -115,7 +113,7 @@ public class TurtlePainterApp extends Painting{
         System.out.println("What is Side Length?");
         int sideLength = Inputs.promptForInt();
         Square square = new Square(turtle, location, color, border,sideLength);
-        Painting.addShape(square);
+        addShape(square);
         square.paint();
     }
 
@@ -124,18 +122,18 @@ public class TurtlePainterApp extends Painting{
         String color = Inputs.promptForColor();
         Point location = Inputs.promptForPoint();
         Triangle triangle = new Triangle(turtle, location, color, border);
-        Painting.addShape(triangle);
+        addShape(triangle);
         triangle.paint();
     }
 
     public static void saveImage() {
-        if(Painting.shapes.isEmpty()) {
+        if(shapes.isEmpty()) {
             System.out.println("No shapes to save. Please add shapes before saving.");
             homeScreen();
             handleChoice();
             return;
         }
-        SavePainting.saveToCsv();
+        saveToCsv();
         System.out.println("Image saved successfully!");
         homeScreen();
         handleChoice();
@@ -144,17 +142,12 @@ public class TurtlePainterApp extends Painting{
 
 
     public static void loadImage() {
-        SavePainting.loadFromCsv();
-        Shape c = savedCircle;
-        Shape s = savedSquare;
-        Shape t = savedTriangle;
-        if(c instanceof Circle circle){
+        Shape test = loadFromCsv();
+        if(test instanceof Circle circle){
             circle.paint();
-            turtle.setDelay(25);
-        } if (s instanceof Square square) {
+        } if (test instanceof Square square) {
             square.paint();
-            turtle.setDelay(25);
-        }if (t instanceof Triangle triangle) {
+        }if (test instanceof Triangle triangle) {
             triangle.paint();
         }
     }

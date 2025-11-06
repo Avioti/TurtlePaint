@@ -17,9 +17,6 @@ import static com.pluralsight.ui.TurtlePainterApp.world;
 
 public class SavePainting {
     private static final String filePath = "src/main/resources/painting.csv";
-    protected static Circle savedCircle;
-    protected static Square savedSquare;
-    protected static Triangle savedTriangle;
 
     public static void saveToCsv() {
         try {
@@ -57,7 +54,7 @@ public class SavePainting {
 
     }
 
-    public static void loadFromCsv() {
+    public static Shape loadFromCsv() {
         try{
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
 
@@ -73,13 +70,13 @@ public class SavePainting {
                 }
                 switch (parts[0]) {
                     case "Circle" -> {
-                        savedCircle = new Circle(turtle, new Point(Integer.parseInt(parts[1]), Integer.parseInt(parts[2])), parts[3], Integer.parseInt(parts[4]), Integer.parseInt(parts[5]));
+                        return new Circle(turtle, new Point(Integer.parseInt(parts[1]), Integer.parseInt(parts[2])), parts[3], Integer.parseInt(parts[4]), Integer.parseInt(parts[5]));
                     }
                     case "Square" -> {
-                        savedSquare =  new Square(turtle, new Point(Integer.parseInt(parts[1]), Integer.parseInt(parts[2])), parts[3], Integer.parseInt(parts[4]), Integer.parseInt(parts[5]));
+                        return new Square(turtle, new Point(Integer.parseInt(parts[1]), Integer.parseInt(parts[2])), parts[3], Integer.parseInt(parts[4]), Integer.parseInt(parts[5]));
                     }
                     case "Triangle" -> {
-                        savedTriangle = new Triangle(turtle, new Point(Integer.parseInt(parts[1]), Integer.parseInt(parts[2])), parts[3], Integer.parseInt(parts[4]));
+                        return new Triangle(turtle, new Point(Integer.parseInt(parts[1]), Integer.parseInt(parts[2])), parts[3], Integer.parseInt(parts[4]));
                     }
                 }
 
@@ -89,6 +86,6 @@ public class SavePainting {
         }catch (Exception e){
             e.printStackTrace();
         }
-
+        return null;
     }
 }
