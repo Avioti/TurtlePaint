@@ -32,4 +32,15 @@ public class Square extends Shape {
         handleChoice();
 
     }
+
+    @Override
+    public String toString() {
+        return "Square{" +
+                "sideLength=" + sideLength +
+                ", turtle=" + turtle +
+                ", location=" + location +
+                ", color='" + color + '\'' +
+                ", border=" + border +
+                '}';
+    }
 }

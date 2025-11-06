@@ -32,4 +32,15 @@ public class Circle extends Shape{
         homeScreen();
         handleChoice();
     }
+
+    @Override
+    public String toString() {
+        return "Circle{" +
+                "radius=" + radius +
+                ", turtle=" + turtle +
+                ", location=" + location +
+                ", color='" + color + '\'' +
+                ", border=" + border +
+                '}';
+    }
 }

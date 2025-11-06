@@ -18,4 +18,14 @@ public abstract class Shape {
     }
 
     abstract void paint();
+
+    @Override
+    public String toString() {
+        return "Shape{" +
+                "turtle=" + turtle +
+                ", location=" + location +
+                ", color='" + color + '\'' +
+                ", border=" + border +
+                '}';
+    }
 }

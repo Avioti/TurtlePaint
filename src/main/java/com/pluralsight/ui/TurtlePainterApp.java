@@ -5,6 +5,7 @@ import com.pluralsight.data.SavePainting;
 import com.pluralsight.data.Turtle;
 import com.pluralsight.data.World;
 import com.pluralsight.shapes.Circle;
+import com.pluralsight.shapes.Shape;
 import com.pluralsight.shapes.Square;
 import com.pluralsight.shapes.Triangle;
 import com.pluralsight.ui.utility.Inputs;
@@ -31,7 +32,8 @@ public class TurtlePainterApp extends Painting{
         System.out.println();
         System.out.println("1. Add Shape");
         System.out.println("2. Save Image");
-        System.out.println("3. Exit");
+        System.out.println("3. Load Saved Images");
+        System.out.println("4. Exit");
     }
 
 
@@ -52,7 +54,8 @@ public class TurtlePainterApp extends Painting{
         switch (choice){
             case 1 -> addShapeFlow();
             case 2 -> saveImage();
-            case 3 -> exit();
+            case 3 -> loadImage();
+            case 4 -> exit();
         }
     }
 
@@ -124,6 +127,23 @@ public class TurtlePainterApp extends Painting{
         System.out.println("Image saved successfully!");
         homeScreen();
         handleChoice();
+    }
+
+    public static void chooseImages() {
+        System.out.println(SavePainting.getShapes());
+        System.out.println("Select the image number to load:");
+    }
+
+    public static void loadImage() {
+        chooseImages();
+        Shape test = SavePainting.loadFromCsv();
+        if(test instanceof Circle circle){
+            circle.paint();
+        } else if (test instanceof Square square) {
+            square.paint();
+        } else if (test instanceof Triangle triangle) {
+            triangle.paint();
+        }
     }
 
     public static void exit() {
