@@ -4,6 +4,7 @@ import com.pluralsight.data.Turtle;
 import com.pluralsight.ui.utility.Inputs;
 
 import java.awt.*;
+import java.util.stream.IntStream;
 
 import static com.pluralsight.ui.TurtlePainterApp.*;
 
@@ -37,6 +38,10 @@ public class Triangle extends Shape{
             turtle.turnRight(-120);
             turtle.forward(hypotenuse);
         }
+//        IntStream.range(0,sides).forEach(i -> {
+//            turtle.turnRight(-120);
+//            turtle.forward(hypotenuse);
+//        });
         homeScreen();
         handleChoice();
 

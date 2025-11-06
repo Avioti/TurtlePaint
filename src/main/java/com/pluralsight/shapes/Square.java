@@ -4,6 +4,7 @@ import com.pluralsight.data.Turtle;
 import com.pluralsight.ui.utility.Inputs;
 
 import java.awt.*;
+import java.util.stream.IntStream;
 
 import static com.pluralsight.ui.TurtlePainterApp.*;
 
@@ -24,10 +25,15 @@ public class Square extends Shape {
         turtle.goTo(location);
         turtle.penDown();
         int sides = 4;
-        for (int i = 0; i < sides; i++) {
+//        for (int i = 0; i < sides; i++) {
+//            turtle.forward(sideLength);
+//            turtle.turnRight(90);
+//        }
+
+        IntStream.range(0, sides).forEach(i -> {
             turtle.forward(sideLength);
             turtle.turnRight(90);
-        }
+        });
         homeScreen();
         handleChoice();
 

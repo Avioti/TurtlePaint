@@ -4,6 +4,7 @@ import com.pluralsight.data.Turtle;
 import com.pluralsight.ui.utility.Inputs;
 
 import java.awt.*;
+import java.util.stream.IntStream;
 
 import static com.pluralsight.ui.TurtlePainterApp.*;
 
@@ -29,6 +30,10 @@ public class Circle extends Shape{
             turtle.forward(sideLength);
             turtle.turnRight(6);
         }
+//        IntStream.range(0, sides).forEach(i -> {
+//            turtle.forward(sideLength);
+//            turtle.turnRight(6);
+//        });
         homeScreen();
         handleChoice();
     }
