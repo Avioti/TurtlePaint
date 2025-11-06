@@ -10,5 +10,12 @@ public abstract class Shape {
     String color;
     int border;
 
+    public Shape(Turtle turtle, Point location, String color, int border) {
+        this.turtle = turtle;
+        this.location = location;
+        this.color = color;
+        this.border = border;
+    }
+
     abstract void paint();
 }
