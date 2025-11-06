@@ -15,15 +15,18 @@ import static com.pluralsight.data.Painting.shapes;
 import static com.pluralsight.ui.TurtlePainterApp.turtle;
 import static com.pluralsight.ui.TurtlePainterApp.world;
 
-public class SavePainting extends Painting {
+public class SavePainting {
     private static final String filePath = "src/main/resources/painting.csv";
+    protected static Circle savedCircle;
+    protected static Square savedSquare;
+    protected static Triangle savedTriangle;
 
     public static void saveToCsv() {
         try {
 
             BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true));
             for (Shape shape : Painting.getShapes()) {
-                String firstLine = world.getWidth() + "|" + world.getHeight() + "|" + Color.WHITE;
+                String firstLine = world.getWidth() + "|" + world.getHeight() + "|white";
                 writer.write(firstLine);
                 writer.newLine();
 
@@ -48,14 +51,13 @@ public class SavePainting extends Painting {
 
             }
             writer.close();
-            Painting.clear();
         } catch (Exception e) {
         e.printStackTrace();
         }
 
     }
 
-    public static Shape loadFromCsv() {
+    public static void loadFromCsv() {
         try{
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
 
@@ -71,13 +73,13 @@ public class SavePainting extends Painting {
                 }
                 switch (parts[0]) {
                     case "Circle" -> {
-                        return new Circle(turtle, new Point(Integer.parseInt(parts[1]), Integer.parseInt(parts[2])), parts[3], Integer.parseInt(parts[4]), Integer.parseInt(parts[5]));
+                        savedCircle = new Circle(turtle, new Point(Integer.parseInt(parts[1]), Integer.parseInt(parts[2])), parts[3], Integer.parseInt(parts[4]), Integer.parseInt(parts[5]));
                     }
                     case "Square" -> {
-                        return new Square(turtle, new Point(Integer.parseInt(parts[1]), Integer.parseInt(parts[2])), parts[3], Integer.parseInt(parts[4]), Integer.parseInt(parts[5]));
+                        savedSquare =  new Square(turtle, new Point(Integer.parseInt(parts[1]), Integer.parseInt(parts[2])), parts[3], Integer.parseInt(parts[4]), Integer.parseInt(parts[5]));
                     }
                     case "Triangle" -> {
-                        return new Triangle(turtle, new Point(Integer.parseInt(parts[1]), Integer.parseInt(parts[2])), parts[3], Integer.parseInt(parts[4]));
+                        savedTriangle = new Triangle(turtle, new Point(Integer.parseInt(parts[1]), Integer.parseInt(parts[2])), parts[3], Integer.parseInt(parts[4]));
                     }
                 }
 
@@ -87,6 +89,6 @@ public class SavePainting extends Painting {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+
     }
 }

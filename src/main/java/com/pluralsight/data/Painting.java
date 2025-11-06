@@ -5,7 +5,7 @@ import com.pluralsight.shapes.Shape;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Painting {
+public class Painting extends SavePainting {
     protected static List<Shape> shapes = new ArrayList<>();
 
     public static void addShape(Shape shape) {

@@ -13,6 +13,8 @@ import com.pluralsight.ui.utility.Inputs;
 import java.awt.*;
 import java.util.Scanner;
 
+
+
 public class TurtlePainterApp extends Painting{
     public static Turtle turtle;
     public static World world;
@@ -23,6 +25,7 @@ public class TurtlePainterApp extends Painting{
         homeScreen();
         handleChoice();
     }
+
     public static void welcomeScreen() {
         System.out.println("Welcome to Turtle Painter!");
         promptCanvasSize();
@@ -56,6 +59,11 @@ public class TurtlePainterApp extends Painting{
             case 2 -> saveImage();
             case 3 -> loadImage();
             case 4 -> exit();
+            default -> {
+                System.out.println("Invalid choice. Please try again.");
+                homeScreen();
+                handleChoice();
+            }
         }
     }
 
@@ -76,6 +84,10 @@ public class TurtlePainterApp extends Painting{
             case 4 -> {
                 homeScreen();
                 handleChoice();
+            }
+            default -> {
+                System.out.println("Invalid choice. Please try again.");
+                addShapeFlow();
             }
         }
 
@@ -129,19 +141,20 @@ public class TurtlePainterApp extends Painting{
         handleChoice();
     }
 
-    public static void chooseImages() {
-        System.out.println(SavePainting.getShapes());
-        System.out.println("Select the image number to load:");
-    }
+
 
     public static void loadImage() {
-        chooseImages();
-        Shape test = SavePainting.loadFromCsv();
-        if(test instanceof Circle circle){
+        SavePainting.loadFromCsv();
+        Shape c = savedCircle;
+        Shape s = savedSquare;
+        Shape t = savedTriangle;
+        if(c instanceof Circle circle){
             circle.paint();
-        } else if (test instanceof Square square) {
+            turtle.setDelay(25);
+        } if (s instanceof Square square) {
             square.paint();
-        } else if (test instanceof Triangle triangle) {
+            turtle.setDelay(25);
+        }if (t instanceof Triangle triangle) {
             triangle.paint();
         }
     }
